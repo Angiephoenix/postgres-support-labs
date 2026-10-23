@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "connectivity",
+  "title": "SSL, authentication and connection strings",
+  "status": "working",
+  "question": "The app cannot connect, or rejects the database certificate. Is it the connection string, the TLS settings, the credentials or the network path?",
+  "exercises": "Connectivity and deployment troubleshooting",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "connectivity-evidence",
+    "sha256": "25eaf1dd8c007a238fb7d0a932924ee8a7f1a61fabb73fae0419ea98790fa3b8"
+  },
+  "phases": [
+    "baseline-verified",
+    "untrusted-ca",
+    "trusted-ca-fix",
+    "wrong-ca",
+    "hostname-mismatch",
+    "require-driver-default",
+    "require-libpq-compat",
+    "no-tls",
+    "wrong-password",
+    "unknown-role",
+    "wrong-database",
+    "password-hash-unencoded",
+    "password-at-unencoded",
+    "password-both-unencoded",
+    "password-both-encoded",
+    "tcp-refused"
+  ],
+  "controls": [
+    {
+      "phase": "wrong-ca",
+      "purpose": "A different, untrusted CA fails with the same certificate-chain code as no CA, so the code alone does not show which CA the client has."
+    },
+    {
+      "phase": "hostname-mismatch",
+      "purpose": "A host name that is not on the certificate fails at the same stage with a different code."
+    },
+    {
+      "phase": "require-driver-default",
+      "purpose": "Shows how the pinned driver treats sslmode=require: as a full certificate check, with a warning."
+    },
+    {
+      "phase": "require-libpq-compat",
+      "purpose": "With uselibpqcompat=true the connection is encrypted but the certificate is not verified. This is a control, never a fix."
+    },
+    {
+      "phase": "no-tls",
+      "purpose": "With TLS off, the server refuses the connection with SQLSTATE 28000, a server-side refusal rather than a client certificate error."
+    },
+    {
+      "phase": "wrong-password",
+      "purpose": "Fails with 28P01 after certificate verification passed."
+    },
+    {
+      "phase": "unknown-role",
+      "purpose": "Also fails with 28P01, so the client error alone cannot tell it from a wrong password."
+    },
+    {
+      "phase": "wrong-database",
+      "purpose": "Fails with 3D000 after authentication."
+    },
+    {
+      "phase": "password-hash-unencoded",
+      "purpose": "Records how the parser handles # left unencoded in a password."
+    },
+    {
+      "phase": "password-at-unencoded",
+      "purpose": "Records how the parser handles @ left unencoded in a password."
+    },
+    {
+      "phase": "password-both-unencoded",
+      "purpose": "Records how the parser handles # and @ together, left unencoded."
+    },
+    {
+      "phase": "password-both-encoded",
+      "purpose": "The same password percent-encoded, as the working counterpart."
+    },
+    {
+      "phase": "tcp-refused",
+      "purpose": "A port with nothing listening fails at TCP connect, before TLS or authentication."
+    }
+  ],
+  "remedies": [
+    "trust-issuing-ca"
+  ],
+  "competingExplanations": [
+    "The client trusts a CA, but not the one that issued this certificate",
+    "The host name does not match the certificate",
+    "sslmode=require was expected not to verify the certificate",
+    "The server refused the connection",
+    "The password, role or database is wrong",
+    "Special characters in the password broke the connection string",
+    "Nothing was listening at the address",
+    "The customer environment differs from this lab"
+  ],
+  "bundle": {
+    "scenario": "tls-trust",
+    "toolVersions": [
+      "0.1.0-connectivity-bundle1",
+      "0.1.0-connectivity-bundle2",
+      "0.1.0-connectivity-bundle3",
+      "0.1.0-connectivity-bundle4"
+    ]
+  },
+  "guide": "docs/connectivity-lab.md",
+  "stillToBuild": [
+    "Client certificates and sslmode=verify-ca",
+    "sslrootcert=system and public CAs",
+    "Direct TLS negotiation (sslnegotiation=direct)",
+    "Guided terminal workflow"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pool exhaustion (connection leak) review input v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scenario",
+    "kind",
+    "comparisonHash",
+    "expectedReviewHead",
+    "reviewer",
+    "decision",
+    "remedy",
+    "causeReviewHash",
+    "rationale"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "scenario": {
+      "const": "connection-leak"
+    },
+    "kind": {
+      "enum": [
+        "cause",
+        "remedy"
+      ]
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "expectedReviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9 _-]{0,79}$"
+    },
+    "decision": {
+      "enum": [
+        "accept",
+        "reject",
+        "request-changes",
+        "select"
+      ]
+    },
+    "remedy": {
+      "enum": [
+        null,
+        "release-in-finally"
+      ]
+    },
+    "causeReviewHash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 2000
+    }
+  }
+}

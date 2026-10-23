@@ -1,0 +1,1 @@
+{"connectionMode":"direct","dataSensitivity":"synthetic","environment":"local-lab","expectedBehavior":"The application can count project labels.","relation":"project_labels","report":"Synthetic application cannot resolve project_labels.","schemaVersion":1,"sqlstate":"42P01"}

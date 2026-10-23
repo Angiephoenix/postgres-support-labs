@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "report": "Project labels work in development; production reports relation project_labels does not exist. The migration command reported success.",
+  "expectedBehavior": "Create and read project labels in the affected environment.",
+  "sqlstate": "42P01",
+  "environment": "production",
+  "branch": "unknown",
+  "connector": "pg",
+  "connectionMode": "unknown",
+  "relation": "project_labels",
+  "dataSensitivity": "synthetic"
+}

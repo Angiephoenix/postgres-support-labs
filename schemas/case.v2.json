@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Investigation case v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "profile",
+    "scope",
+    "intake",
+    "subject"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "profile": {
+      "const": "fixture"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment",
+        "branchFingerprint",
+        "roleFingerprint",
+        "connectionMode",
+        "identityMethod"
+      ],
+      "properties": {
+        "environment": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "branchFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "roleFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "connectionMode": {
+          "enum": [
+            "direct",
+            "pooled",
+            "unknown"
+          ]
+        },
+        "identityMethod": {
+          "const": "fixture-definition"
+        }
+      }
+    },
+    "intake": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Case intake v1",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "report",
+        "expectedBehavior"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "report": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "expectedBehavior": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "errorMessage": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "sqlstate": {
+          "type": "string",
+          "pattern": "^([0-9A-Z]{5}|unknown)$"
+        },
+        "firstObservedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "framework": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "connector": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "deployment": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "connectionMode": {
+          "enum": [
+            "direct",
+            "pooled",
+            "unknown"
+          ]
+        },
+        "recentChange": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "impact": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "reproductionStatus": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "dataSensitivity": {
+          "enum": [
+            "synthetic",
+            "sanitized",
+            "unknown"
+          ]
+        },
+        "relation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "schema",
+        "migrationId",
+        "queryShapeHash",
+        "expectedBranchFingerprint"
+      ],
+      "properties": {
+        "relation": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "migrationId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "queryShapeHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "expectedBranchFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

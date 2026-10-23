@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "pool-exhaustion",
+  "title": "Application pool exhaustion",
+  "status": "working",
+  "question": "Requests hang waiting for a database connection. Is the application leaking connections, or is the pool simply too small for the load?",
+  "exercises": "Debugging across the application and the database",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "pool-exhaustion-evidence",
+    "sha256": "5c1a6e26023540e62ef4af0ae257353a88614b9f619009faef8cc809daf505a0"
+  },
+  "phases": [
+    "baseline-valid-only",
+    "leak-reproduced",
+    "demand-beyond-capacity",
+    "slow-query",
+    "long-transaction",
+    "server-refusal",
+    "fix-applied",
+    "demand-beyond-capacity-after-fix"
+  ],
+  "controls": [
+    {
+      "phase": "demand-beyond-capacity",
+      "purpose": "More concurrent requests than clients give the same pool checkout timeout as the leak, and the pool recovers once the load ends."
+    },
+    {
+      "phase": "slow-query",
+      "purpose": "Queries held running on the server exhaust the pool and a probe times out; the pool recovers when they finish."
+    },
+    {
+      "phase": "long-transaction",
+      "purpose": "Transactions left open by the application show as idle in transaction and exhaust the pool; it recovers when they commit."
+    },
+    {
+      "phase": "server-refusal",
+      "purpose": "A pool larger than the server allows gets SQLSTATE 53300 on connect, a server refusal rather than a pool checkout timeout."
+    },
+    {
+      "phase": "demand-beyond-capacity-after-fix",
+      "purpose": "With the fixed handler, the same demand still produces checkout timeouts, so releasing in finally does not change capacity."
+    }
+  ],
+  "remedies": [
+    "release-in-finally"
+  ],
+  "competingExplanations": [
+    "Legitimate demand beyond the pool’s capacity",
+    "Slow queries holding every client",
+    "Transactions left open by the application",
+    "PostgreSQL refusing new connections",
+    "Another application or a pooler sharing the role or the server",
+    "The customer environment differs from this lab"
+  ],
+  "bundle": {
+    "scenario": "connection-leak",
+    "toolVersions": [
+      "0.1.0-pool-exhaustion-bundle1",
+      "0.1.0-pool-exhaustion-bundle2"
+    ]
+  },
+  "guide": "docs/pool-exhaustion-lab.md",
+  "stillToBuild": [
+    "A leak inside an aborted transaction",
+    "A control for idle_in_transaction_session_timeout",
+    "A failing request that violates a CHECK constraint",
+    "A run on macOS",
+    "Guided terminal workflow"
+  ]
+}

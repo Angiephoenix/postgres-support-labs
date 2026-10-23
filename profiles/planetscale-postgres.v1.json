@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "id": "planetscale-postgres",
+  "title": "PlanetScale Postgres connection profile",
+  "scope": "Documented platform facts only. Nothing in this profile was tested against PlanetScale or a customer environment.",
+  "sources": [
+    {
+      "id": "connecting",
+      "url": "https://planetscale.com/docs/postgres/connecting",
+      "markdownUrl": "https://planetscale.com/docs/postgres/connecting.md",
+      "retrievedAt": "2026-10-04T07:20:50.000Z",
+      "markdownSha256": "d62ff56bf2e8d940bd11c8f64c75312abfef83da2c047255b23e39189fff7f81",
+      "htmlSha256": "eb8d7fdbc3aa955d718100ab260055dfbdc1232c4379a7f7e6a87697a4c25577"
+    },
+    {
+      "id": "pgbouncer",
+      "url": "https://planetscale.com/docs/postgres/connecting/pgbouncer",
+      "markdownUrl": "https://planetscale.com/docs/postgres/connecting/pgbouncer.md",
+      "retrievedAt": "2026-10-04T07:20:51.000Z",
+      "markdownSha256": "6fadd39fc6df5c7899ec50c3a0f161fc71fcdd31d42b0b768255ccbf0c788827",
+      "htmlSha256": "40fbe580ad7a112b80009dc7cca3ec97bb1c7bf4063ee734974bbc8dcff27e0d"
+    }
+  ],
+  "facts": [
+    {
+      "id": "pooling-transaction-mode-only",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "PlanetScale-managed PgBouncers run only in transaction pooling mode. Session pooling is not offered.",
+      "sourceId": "connecting",
+      "passage": "All managed PgBouncers run in transaction pooling mode. Session pooling is not offered because it creates a 1:1 mapping between clients and Postgres connections, so it hits the same connection limits as direct connections while introducing additional latency through another proxy layer.",
+      "passageSha256": "3fd6a846478697100c783c102f16eb6538f6fa73945ce7cb1932b218b21ca8ac"
+    },
+    {
+      "id": "pooling-per-transaction-assignment",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "Through PgBouncer, a server connection is assigned to a client for one transaction at a time, which limits features that need a persistent connection.",
+      "sourceId": "pgbouncer",
+      "passage": "PgBouncer connections operate in transaction mode, which means pooled server connections are assigned to client connections on a per-transaction level. This provides excellent performance for OLTP workloads but limits certain PostgreSQL features that require persistent connections.",
+      "passageSha256": "9249be5fb6e03beb4273816a4e8236c1809e6d9c43ae1b9e9b605e18a268accb"
+    },
+    {
+      "id": "pooling-prepared-statements",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "Prepared statements that persist across transactions are listed as limited under transaction pooling. Protocol-level prepared statements work when max_prepared_statements is configured.",
+      "sourceId": "pgbouncer",
+      "passage": "* Prepared statements that persist across transactions (protocol-level prepared statements work with `max_prepared_statements` configured)",
+      "passageSha256": "95c209612e744d1cb365c68797975ec60a52813db0cecad5551f6daa989bd62f"
+    },
+    {
+      "id": "pooling-max-prepared-statements-default",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "max_prepared_statements defaults to 200 on PlanetScale PgBouncers. When non-zero, PgBouncer tracks protocol-level named prepared statements in transaction pooling mode.",
+      "sourceId": "pgbouncer",
+      "passage": "| max\\_prepared\\_statements | When non-zero, PgBouncer tracks protocol-level named prepared statements in transaction and statement pooling mode. Default: `200` |",
+      "passageSha256": "2ba4800751e74a80ad10bf5ef69a592e526682b86d25205c0eb7c921d908e586"
+    },
+    {
+      "id": "pooling-session-features-use-direct",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "Session-specific behavior, such as SET that persists beyond a transaction or temporary tables, should use a direct connection on port 5432.",
+      "sourceId": "connecting",
+      "passage": "If you require session-specific behavior, use a direct connection on port `5432` instead of requesting session pooling.",
+      "passageSha256": "078d051a34e133f8ccf4480f1239532d16326c20a130cc92be18192a3068918b"
+    },
+    {
+      "id": "pooling-local-bouncer-primary-only",
+      "topic": "pooling",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "The local PgBouncer routes every connection to the primary. Replica traffic needs a dedicated replica PgBouncer.",
+      "sourceId": "pgbouncer",
+      "passage": "All connections through the local PgBouncer are automatically routed to the primary database, regardless of the username specification.",
+      "passageSha256": "66211baac63404bbf091e6c8d7a3177a7ad21bb265d033a73a7b1a0b1f7ff856"
+    },
+    {
+      "id": "connection-ports",
+      "topic": "connection-string",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "Port 5432 connects directly to Postgres, bypassing PgBouncer. Port 6432 connects through PgBouncer.",
+      "sourceId": "connecting",
+      "passage": "* **Port 5432** — Direct connections to Postgres, bypassing PgBouncer\n* **Port 6432** — Connections through PgBouncer for connection pooling",
+      "passageSha256": "398b7019e3d1cee8b8bf5ed7d6d9777e1c1034109f7502c322f73d117031ca96"
+    },
+    {
+      "id": "connection-local-bouncer-same-credentials",
+      "topic": "connection-string",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "The local PgBouncer uses the same credentials as a direct connection, with port 6432 instead of 5432.",
+      "sourceId": "connecting",
+      "passage": "To connect via the local PgBouncer, use the same credentials as a direct connection but change the port from `5432` to `6432`.",
+      "passageSha256": "5c642b89c04d3c3c072888b8731a9793029099db91c77bd18d25d9260f0fd81e"
+    },
+    {
+      "id": "connection-credential-format",
+      "topic": "connection-string",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "Usernames take the form {role}.{branch_id}, and passwords start with pscale_pw_.",
+      "sourceId": "connecting",
+      "passage": "Connection credentials include a hostname, username (formatted as `{role}.{branch_id}`), password (prefixed with `pscale_pw_`), and database name.",
+      "passageSha256": "b051aca4466804c4f9d03554ff0e5225fe28a365814ff379d91521b0576faf83"
+    },
+    {
+      "id": "connection-replica-suffix",
+      "topic": "connection-string",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "A direct replica connection appends |replica to the username and uses port 5432.",
+      "sourceId": "connecting",
+      "passage": "To connect to a replica, append `|replica` to your credential username and use port `5432`.",
+      "passageSha256": "b1f2b0f45769706bc8eaa0e8589e8384b817be8745757cd0e8bdecd55645b703"
+    },
+    {
+      "id": "connection-dedicated-bouncer-suffix",
+      "topic": "connection-string",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "A dedicated PgBouncer connection appends |<pgbouncer-name> to the username and uses port 6432.",
+      "sourceId": "connecting",
+      "passage": "Connect to replica or primary PgBouncers via port `6432` and append the name of the PgBouncer to your username.",
+      "passageSha256": "3f3c897170e6ad85bbecb6bebad8b5265008e6d569f460a10d3ac7df8fe950c2"
+    },
+    {
+      "id": "ssl-required",
+      "topic": "ssl",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "PlanetScale requires SSL/TLS encryption for every connection.",
+      "sourceId": "connecting",
+      "passage": "PlanetScale databases require SSL/TLS encryption for all connections.",
+      "passageSha256": "07c7d6a58925d0f728ac678354f70a93834bb9c3fd68110c8acff88bc73a8c65"
+    },
+    {
+      "id": "ssl-example-parameters",
+      "topic": "ssl",
+      "classification": "DOCUMENTED_BEHAVIOR",
+      "statement": "The documented example connection strings end with sslnegotiation=direct, sslmode=verify-full and sslrootcert=system. These are examples on the page, not a stated requirement.",
+      "sourceId": "pgbouncer",
+      "passage": "      sslnegotiation=direct \\\n      sslmode=verify-full \\\n      sslrootcert=system'",
+      "passageSha256": "69aa21ca67a1f907d091752ed1084002e7c0d49b980ad84e8f10cd76a554771c"
+    }
+  ],
+  "customerQuestions": [
+    {
+      "id": "which-port",
+      "topic": "connection-string",
+      "question": "Which port did the failing connection use: 5432 (direct) or 6432 (PgBouncer)?",
+      "facts": [
+        "connection-ports"
+      ]
+    },
+    {
+      "id": "which-username-suffix",
+      "topic": "connection-string",
+      "question": "Does the username include a suffix such as |replica or the name of a dedicated PgBouncer?",
+      "facts": [
+        "connection-replica-suffix",
+        "connection-dedicated-bouncer-suffix"
+      ]
+    },
+    {
+      "id": "preparation-method",
+      "topic": "pooling",
+      "question": "Does the application or driver prepare statements with SQL PREPARE, or with protocol-level named prepared statements?",
+      "facts": [
+        "pooling-prepared-statements",
+        "pooling-max-prepared-statements-default"
+      ]
+    },
+    {
+      "id": "session-features",
+      "topic": "pooling",
+      "question": "Does the workflow rely on session features such as SET that outlives a transaction, temporary tables, LISTEN/NOTIFY or session advisory locks?",
+      "facts": [
+        "pooling-per-transaction-assignment",
+        "pooling-session-features-use-direct"
+      ]
+    },
+    {
+      "id": "session-resets",
+      "topic": "pooling",
+      "question": "Does the application or driver reset sessions, for example with DEALLOCATE ALL or DISCARD ALL?",
+      "facts": []
+    },
+    {
+      "id": "prepared-statements-setting",
+      "topic": "pooling",
+      "question": "What is max_prepared_statements set to on the PgBouncer the app uses? Has it been changed from the default?",
+      "facts": [
+        "pooling-max-prepared-statements-default"
+      ]
+    },
+    {
+      "id": "tls-settings",
+      "topic": "ssl",
+      "question": "Which sslmode and related TLS settings does the client use, and does the connection succeed with TLS?",
+      "facts": [
+        "ssl-required",
+        "ssl-example-parameters"
+      ]
+    }
+  ]
+}

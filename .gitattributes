@@ -1,0 +1,5 @@
+# Committed examples are verified against hashes of their exact bytes, and
+# bundle verification rebuilds reports that embed the font license texts.
+# Never convert line endings in these files on checkout or commit.
+examples/** -text
+docs/*-LICENSE.txt -text

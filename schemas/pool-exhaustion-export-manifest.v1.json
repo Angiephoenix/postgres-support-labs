@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pool exhaustion (connection leak) support bundle manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scenario",
+    "toolVersion",
+    "profile",
+    "runId",
+    "generatedAt",
+    "mode",
+    "comparisonHash",
+    "reviewHead",
+    "sourceManifestHash",
+    "remedy",
+    "redactionStatus",
+    "communicationApproval",
+    "files"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "scenario": {
+      "const": "connection-leak"
+    },
+    "toolVersion": {
+      "enum": [
+        "0.1.0-pool-exhaustion-bundle1",
+        "0.1.0-pool-exhaustion-bundle2"
+      ]
+    },
+    "profile": {
+      "const": "local-lab"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[a-f0-9-]{36}$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "enum": [
+        "reviewed",
+        "gaps"
+      ]
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceManifestHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "remedy": {
+      "enum": [
+        null,
+        "release-in-finally"
+      ]
+    },
+    "redactionStatus": {
+      "const": "recognized-patterns-checked"
+    },
+    "communicationApproval": {
+      "const": "PENDING"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "enum": [
+              "case-summary.md",
+              "comparison.json",
+              "customer-reply.md",
+              "engineering-escalation.md",
+              "evidence-gap-report.md",
+              "evidence.jsonl",
+              "findings.json",
+              "hypotheses.json",
+              "probe-plan.json",
+              "reproduction.md",
+              "resolution-validation.md",
+              "runbook-candidate.md",
+              "sources/pool-exhaustion-manifest.json",
+              "sources/pool-exhaustion-plan.json",
+              "sources/pool-exhaustion-probes.json",
+              "sources/pool-exhaustion-reviews.jsonl",
+              "sources/pool-exhaustion-run.json",
+              "support-bundle.html",
+              "timeline.json",
+              "validation.json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

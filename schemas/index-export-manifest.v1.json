@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Slow query and index support bundle manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scenario",
+    "toolVersion",
+    "profile",
+    "runId",
+    "generatedAt",
+    "mode",
+    "comparisonHash",
+    "reviewHead",
+    "sourceManifestHash",
+    "remedy",
+    "redactionStatus",
+    "communicationApproval",
+    "files"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "scenario": {
+      "const": "slow-query-index"
+    },
+    "toolVersion": {
+      "enum": [
+        "0.1.0-index-bundle1",
+        "0.1.0-index-bundle2"
+      ]
+    },
+    "profile": {
+      "const": "local-lab"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[a-f0-9-]{36}$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "enum": [
+        "reviewed",
+        "gaps"
+      ]
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceManifestHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "remedy": {
+      "enum": [
+        null,
+        "create-index"
+      ]
+    },
+    "redactionStatus": {
+      "const": "recognized-patterns-checked"
+    },
+    "communicationApproval": {
+      "const": "PENDING"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "enum": [
+              "case-summary.md",
+              "comparison.json",
+              "customer-reply.md",
+              "engineering-escalation.md",
+              "evidence-gap-report.md",
+              "evidence.jsonl",
+              "findings.json",
+              "hypotheses.json",
+              "probe-plan.json",
+              "reproduction.md",
+              "resolution-validation.md",
+              "runbook-candidate.md",
+              "sources/index-manifest.json",
+              "sources/index-plan.json",
+              "sources/index-probes.json",
+              "sources/index-reviews.jsonl",
+              "sources/index-run.json",
+              "support-bundle.html",
+              "timeline.json",
+              "validation.json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

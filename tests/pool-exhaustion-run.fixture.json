@@ -1,0 +1,3689 @@
+{
+ "cause": null,
+ "classification": "REPRODUCED_BEHAVIOR",
+ "cleanup": "COMPLETE",
+ "clusterFingerprint": "0b686c159258fa3f457c91e6c11ec7b9f5f56cf10e69e655fbdb77a41a14d728",
+ "collectedAt": "2026-10-15T12:00:00.000Z",
+ "customerResolution": null,
+ "environment": {
+  "namesPresent": []
+ },
+ "expiresAt": "2026-10-15T13:00:00.000Z",
+ "handlers": {
+  "fixed": "0560850eaa58f530d20ff2882ba21b5344648d63a4c9cb952c7f2d9e41f06d8c",
+  "original": "6cac891039d91b711a5595c88e6c74b74f0ce34566899ca480d811f4aa1a5e4c",
+  "transaction": "a72fd8ce944e48677f280977078efbdba50dc816ca4f0e7d6d8162d7c596292f"
+ },
+ "phases": [
+  {
+   "applicationName": "pslab-pool-baseline-valid-only",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 850,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 851,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 852,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:01.341Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 851,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 852,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 850,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 7,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 851,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 7,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 852,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 8,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 850,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 850,
+     "client": 3,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 11,
+     "backendPid": 852,
+     "client": 2,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 12,
+     "backendPid": 851,
+     "client": 1,
+     "lease": 6,
+     "pool": 1,
+     "releaseSeq": 14,
+     "releasedWithError": false,
+     "request": 6
+    }
+   ],
+   "phase": "baseline-valid-only",
+   "planHash": "1e9e7854e39a2817d586a6bafa32e18d5ff90d057301ca02ef29f4fbafa9bf00",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "valid",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 6,
+     "sqlstate": null,
+     "step": "baseline",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-leak-reproduced",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-failing",
+     "pool": 1,
+     "reached": true,
+     "seq": 7,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 853,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 854,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 855,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 1
+     },
+     "kind": "live",
+     "name": "probe-started",
+     "pool": 1,
+     "reached": true,
+     "seq": 7,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 853,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 854,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 855,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-probe",
+     "pool": 1,
+     "reached": true,
+     "seq": 7,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 853,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 854,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 855,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-quiet",
+     "pool": 1,
+     "reached": true,
+     "seq": 7,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 853,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 854,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 855,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-recovery",
+     "pool": 1,
+     "reached": true,
+     "seq": 7,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 853,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 854,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 855,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:01.363Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 854,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 853,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 855,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 854,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": null,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 853,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": null,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 855,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": null,
+     "releasedWithError": false,
+     "request": 3
+    }
+   ],
+   "phase": "leak-reproduced",
+   "planHash": "86d94c4bd4180f8a6eec341e2b7330b86ca14006c3700195cdd87ed343379a86",
+   "quietMs": 1001,
+   "requests": [
+    {
+     "kind": "failing",
+     "lease": 2,
+     "outcome": "division-by-zero",
+     "request": 1,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "failing",
+     "lease": 1,
+     "outcome": "division-by-zero",
+     "request": 2,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "failing",
+     "lease": 3,
+     "outcome": "division-by-zero",
+     "request": 3,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 4,
+     "sqlstate": null,
+     "step": "probe",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 5,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-demand-beyond-capacity",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "warm",
+     "pool": 1,
+     "reached": true,
+     "seq": 10,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 856,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 857,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 858,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 9
+     },
+     "kind": "live",
+     "name": "saturated",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 856,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      },
+      {
+       "inTransaction": true,
+       "pid": 857,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      },
+      {
+       "inTransaction": true,
+       "pid": 858,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 22,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 856,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 857,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 858,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "recovered",
+     "pool": 1,
+     "reached": true,
+     "seq": 24,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 856,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 857,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 858,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:05.996Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 856,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 857,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 858,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 7,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 18,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 19,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 20,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 21,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 22,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 23,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 856,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 8,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 857,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 7,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 858,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 858,
+     "client": 3,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 11,
+     "backendPid": 856,
+     "client": 1,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 17,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 12,
+     "backendPid": 857,
+     "client": 2,
+     "lease": 6,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 6
+    },
+    {
+     "acquireSeq": 14,
+     "backendPid": 857,
+     "client": 2,
+     "lease": 7,
+     "pool": 1,
+     "releaseSeq": 19,
+     "releasedWithError": false,
+     "request": 7
+    },
+    {
+     "acquireSeq": 16,
+     "backendPid": 858,
+     "client": 3,
+     "lease": 8,
+     "pool": 1,
+     "releaseSeq": 20,
+     "releasedWithError": false,
+     "request": 8
+    },
+    {
+     "acquireSeq": 18,
+     "backendPid": 856,
+     "client": 1,
+     "lease": 9,
+     "pool": 1,
+     "releaseSeq": 21,
+     "releasedWithError": false,
+     "request": 9
+    },
+    {
+     "acquireSeq": 22,
+     "backendPid": 856,
+     "client": 1,
+     "lease": 10,
+     "pool": 1,
+     "releaseSeq": 23,
+     "releasedWithError": false,
+     "request": 16
+    }
+   ],
+   "phase": "demand-beyond-capacity",
+   "planHash": "fe0295c603a87ac72f587db4039e16ad9f075a8c7e3ee32fdb19b9aa65f2942a",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "valid",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 6,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 7,
+     "outcome": "ok",
+     "request": 7,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 8,
+     "outcome": "ok",
+     "request": 8,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 9,
+     "outcome": "ok",
+     "request": 9,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 10,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 11,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 12,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 13,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 14,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 15,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 10,
+     "outcome": "ok",
+     "request": 16,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-slow-query",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "warm",
+     "pool": 1,
+     "reached": true,
+     "seq": 10,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 859,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 860,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 861,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "saturated",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 859,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 860,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 861,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "probe-settled",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 859,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 860,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 861,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 859,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 860,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 861,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "recovered",
+     "pool": 1,
+     "reached": true,
+     "seq": 18,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 859,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 860,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 861,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:06.824Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 860,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 861,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 859,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 7,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 860,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 861,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 7,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 859,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 8,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 860,
+     "client": 1,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 14,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 11,
+     "backendPid": 859,
+     "client": 3,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 12,
+     "backendPid": 861,
+     "client": 2,
+     "lease": 6,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 6
+    },
+    {
+     "acquireSeq": 16,
+     "backendPid": 859,
+     "client": 3,
+     "lease": 7,
+     "pool": 1,
+     "releaseSeq": 17,
+     "releasedWithError": false,
+     "request": 8
+    }
+   ],
+   "phase": "slow-query",
+   "planHash": "34135046ef00812d3db453e17694a14433adc82e2d018456bee25d22a9ed7eb7",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "valid",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 6,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 7,
+     "sqlstate": null,
+     "step": "probe",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 7,
+     "outcome": "ok",
+     "request": 8,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-long-transaction",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "warm",
+     "pool": 1,
+     "reached": true,
+     "seq": 10,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 862,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 863,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 864,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "saturated",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 862,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": true,
+       "pid": 863,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": true,
+       "pid": 864,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "probe-settled",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 862,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": true,
+       "pid": 863,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": true,
+       "pid": 864,
+       "state": "idle in transaction",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 862,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 863,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 864,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "recovered",
+     "pool": 1,
+     "reached": true,
+     "seq": 18,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 862,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 863,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 864,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:07.650Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 863,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 862,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 5,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 864,
+     "pool": 1,
+     "seq": 7,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 863,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 5,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 862,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 6,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 8,
+     "backendPid": 864,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 864,
+     "client": 3,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 11,
+     "backendPid": 862,
+     "client": 2,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 14,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 12,
+     "backendPid": 863,
+     "client": 1,
+     "lease": 6,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 6
+    },
+    {
+     "acquireSeq": 16,
+     "backendPid": 864,
+     "client": 3,
+     "lease": 7,
+     "pool": 1,
+     "releaseSeq": 17,
+     "releasedWithError": false,
+     "request": 8
+    }
+   ],
+   "phase": "long-transaction",
+   "planHash": "cad27ab6d6cba592e613031532581f0557a40c23de13cc0646fc554f03d6ceca",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "valid",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "transaction",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "transaction",
+     "via": "transaction-harness"
+    },
+    {
+     "kind": "transaction",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "transaction",
+     "via": "transaction-harness"
+    },
+    {
+     "kind": "transaction",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 6,
+     "sqlstate": null,
+     "step": "transaction",
+     "via": "transaction-harness"
+    },
+    {
+     "kind": "valid",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 7,
+     "sqlstate": null,
+     "step": "probe",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 7,
+     "outcome": "ok",
+     "request": 8,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-server-refusal",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 0,
+      "total": 0,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "slots",
+     "pool": 1,
+     "reached": true,
+     "seq": 1,
+     "sessions": []
+    },
+    {
+     "counters": {
+      "checkedOut": 5,
+      "idle": 0,
+      "total": 5,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "held",
+     "pool": 1,
+     "reached": true,
+     "seq": 11,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 865,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 866,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 867,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 868,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      },
+      {
+       "inTransaction": true,
+       "pid": 869,
+       "state": "active",
+       "waitEvent": "advisory",
+       "waitEventType": "Lock"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 5,
+      "total": 5,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 865,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 866,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 867,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 868,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 869,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 0,
+      "total": 0,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "pool-closed",
+     "pool": 1,
+     "reached": true,
+     "seq": 21,
+     "sessions": []
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 1,
+      "total": 1,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "recovered",
+     "pool": 2,
+     "reached": true,
+     "seq": 24,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 873,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:08.478Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 865,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 866,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 867,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": 868,
+     "pool": 1,
+     "seq": 7,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 5,
+     "pid": 869,
+     "pool": 1,
+     "seq": 9,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 5,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 5,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 18,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 19,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 5,
+     "pid": null,
+     "pool": 1,
+     "seq": 20,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 6,
+     "pid": 873,
+     "pool": 2,
+     "seq": 21,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 6,
+     "pid": null,
+     "pool": 2,
+     "seq": 22,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 6,
+     "pid": null,
+     "pool": 2,
+     "seq": 23,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "original",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 865,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 12,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 866,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 867,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 11,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 8,
+     "backendPid": 868,
+     "client": 4,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 869,
+     "client": 5,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 14,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 22,
+     "backendPid": 873,
+     "client": 6,
+     "lease": 6,
+     "pool": 2,
+     "releaseSeq": 23,
+     "releasedWithError": false,
+     "request": 9
+    }
+   ],
+   "phase": "server-refusal",
+   "planHash": "42ae4e66517a5e31e9b2975cafc8122a4b765783e58dd27de6bf7ccb1e5f21a6",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "gated",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": null,
+     "outcome": "server-refused-reserved",
+     "request": 6,
+     "sqlstate": "53300",
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": null,
+     "outcome": "server-refused-reserved",
+     "request": 7,
+     "sqlstate": "53300",
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "gated",
+     "lease": null,
+     "outcome": "server-refused-reserved",
+     "request": 8,
+     "sqlstate": "53300",
+     "step": "gated",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 9,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": {
+    "clientBackends": 1,
+    "free": 5
+   }
+  },
+  {
+   "applicationName": "pslab-pool-fix-applied",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 0,
+      "total": 0,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-failing",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": []
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 1,
+      "total": 1,
+      "waiting": 0
+     },
+     "kind": "live",
+     "name": "probe-started",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 877,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 1,
+      "total": 1,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-probe",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 877,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 1,
+      "total": 1,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-quiet",
+     "pool": 1,
+     "reached": true,
+     "seq": 16,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 877,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 1,
+      "total": 1,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "after-recovery",
+     "pool": 1,
+     "reached": true,
+     "seq": 18,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 877,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:08.601Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 874,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 875,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 876,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 7,
+     "type": "release",
+     "withError": true
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "release",
+     "withError": true
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": true
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "remove",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": 877,
+     "pool": 1,
+     "seq": 13,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 4,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "fixed",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 874,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 7,
+     "releasedWithError": true,
+     "request": 1
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 875,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 8,
+     "releasedWithError": true,
+     "request": 2
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 876,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": true,
+     "request": 3
+    },
+    {
+     "acquireSeq": 14,
+     "backendPid": 877,
+     "client": 4,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 16,
+     "backendPid": 877,
+     "client": 4,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 17,
+     "releasedWithError": false,
+     "request": 5
+    }
+   ],
+   "phase": "fix-applied",
+   "planHash": "86d94c4bd4180f8a6eec341e2b7330b86ca14006c3700195cdd87ed343379a86",
+   "quietMs": 1001,
+   "requests": [
+    {
+     "kind": "failing",
+     "lease": 1,
+     "outcome": "division-by-zero",
+     "request": 1,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "failing",
+     "lease": 2,
+     "outcome": "division-by-zero",
+     "request": 2,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "failing",
+     "lease": 3,
+     "outcome": "division-by-zero",
+     "request": 3,
+     "sqlstate": "22012",
+     "step": "failing",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "probe",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  },
+  {
+   "applicationName": "pslab-pool-demand-beyond-capacity-after-fix",
+   "checkpoints": [
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "warm",
+     "pool": 1,
+     "reached": true,
+     "seq": 10,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 878,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 879,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 880,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 3,
+      "idle": 0,
+      "total": 3,
+      "waiting": 9
+     },
+     "kind": "live",
+     "name": "saturated",
+     "pool": 1,
+     "reached": true,
+     "seq": 13,
+     "sessions": [
+      {
+       "inTransaction": true,
+       "pid": 878,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      },
+      {
+       "inTransaction": true,
+       "pid": 879,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      },
+      {
+       "inTransaction": true,
+       "pid": 880,
+       "state": "active",
+       "waitEvent": "PgSleep",
+       "waitEventType": "Timeout"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "completed",
+     "pool": 1,
+     "reached": true,
+     "seq": 22,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 878,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 879,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 880,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    },
+    {
+     "counters": {
+      "checkedOut": 0,
+      "idle": 3,
+      "total": 3,
+      "waiting": 0
+     },
+     "kind": "quiescent",
+     "name": "recovered",
+     "pool": 1,
+     "reached": true,
+     "seq": 24,
+     "sessions": [
+      {
+       "inTransaction": false,
+       "pid": 878,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 879,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      },
+      {
+       "inTransaction": false,
+       "pid": 880,
+       "state": "idle",
+       "waitEvent": "ClientRead",
+       "waitEventType": "Client"
+      }
+     ]
+    }
+   ],
+   "clientErrors": [],
+   "collectedAt": "2026-10-15T12:00:09.642Z",
+   "events": [
+    {
+     "client": 1,
+     "pid": 878,
+     "pool": 1,
+     "seq": 1,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 2,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": 879,
+     "pool": 1,
+     "seq": 3,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 4,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": 880,
+     "pool": 1,
+     "seq": 5,
+     "type": "connect",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 6,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 7,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 8,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 9,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 10,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 11,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 12,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 13,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 14,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 15,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 16,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 17,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 18,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 2,
+     "pid": null,
+     "pool": 1,
+     "seq": 19,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 3,
+     "pid": null,
+     "pool": 1,
+     "seq": 20,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 21,
+     "type": "release",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 22,
+     "type": "acquire",
+     "withError": false
+    },
+    {
+     "client": 1,
+     "pid": null,
+     "pool": 1,
+     "seq": 23,
+     "type": "release",
+     "withError": false
+    }
+   ],
+   "handler": "fixed",
+   "leases": [
+    {
+     "acquireSeq": 2,
+     "backendPid": 878,
+     "client": 1,
+     "lease": 1,
+     "pool": 1,
+     "releaseSeq": 8,
+     "releasedWithError": false,
+     "request": 1
+    },
+    {
+     "acquireSeq": 4,
+     "backendPid": 879,
+     "client": 2,
+     "lease": 2,
+     "pool": 1,
+     "releaseSeq": 7,
+     "releasedWithError": false,
+     "request": 2
+    },
+    {
+     "acquireSeq": 6,
+     "backendPid": 880,
+     "client": 3,
+     "lease": 3,
+     "pool": 1,
+     "releaseSeq": 9,
+     "releasedWithError": false,
+     "request": 3
+    },
+    {
+     "acquireSeq": 10,
+     "backendPid": 880,
+     "client": 3,
+     "lease": 4,
+     "pool": 1,
+     "releaseSeq": 15,
+     "releasedWithError": false,
+     "request": 4
+    },
+    {
+     "acquireSeq": 11,
+     "backendPid": 878,
+     "client": 1,
+     "lease": 5,
+     "pool": 1,
+     "releaseSeq": 17,
+     "releasedWithError": false,
+     "request": 5
+    },
+    {
+     "acquireSeq": 12,
+     "backendPid": 879,
+     "client": 2,
+     "lease": 6,
+     "pool": 1,
+     "releaseSeq": 13,
+     "releasedWithError": false,
+     "request": 6
+    },
+    {
+     "acquireSeq": 14,
+     "backendPid": 879,
+     "client": 2,
+     "lease": 7,
+     "pool": 1,
+     "releaseSeq": 19,
+     "releasedWithError": false,
+     "request": 7
+    },
+    {
+     "acquireSeq": 16,
+     "backendPid": 880,
+     "client": 3,
+     "lease": 8,
+     "pool": 1,
+     "releaseSeq": 20,
+     "releasedWithError": false,
+     "request": 8
+    },
+    {
+     "acquireSeq": 18,
+     "backendPid": 878,
+     "client": 1,
+     "lease": 9,
+     "pool": 1,
+     "releaseSeq": 21,
+     "releasedWithError": false,
+     "request": 9
+    },
+    {
+     "acquireSeq": 22,
+     "backendPid": 878,
+     "client": 1,
+     "lease": 10,
+     "pool": 1,
+     "releaseSeq": 23,
+     "releasedWithError": false,
+     "request": 16
+    }
+   ],
+   "phase": "demand-beyond-capacity-after-fix",
+   "planHash": "fe0295c603a87ac72f587db4039e16ad9f075a8c7e3ee32fdb19b9aa65f2942a",
+   "quietMs": null,
+   "requests": [
+    {
+     "kind": "valid",
+     "lease": 1,
+     "outcome": "ok",
+     "request": 1,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 2,
+     "outcome": "ok",
+     "request": 2,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 3,
+     "outcome": "ok",
+     "request": 3,
+     "sqlstate": null,
+     "step": "warm",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 4,
+     "outcome": "ok",
+     "request": 4,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 5,
+     "outcome": "ok",
+     "request": 5,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 6,
+     "outcome": "ok",
+     "request": 6,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 7,
+     "outcome": "ok",
+     "request": 7,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 8,
+     "outcome": "ok",
+     "request": 8,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": 9,
+     "outcome": "ok",
+     "request": 9,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 10,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 11,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 12,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 13,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 14,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "busy",
+     "lease": null,
+     "outcome": "pool-checkout-timeout",
+     "request": 15,
+     "sqlstate": null,
+     "step": "busy",
+     "via": "handler"
+    },
+    {
+     "kind": "valid",
+     "lease": 10,
+     "outcome": "ok",
+     "request": 16,
+     "sqlstate": null,
+     "step": "recovery",
+     "via": "handler"
+    }
+   ],
+   "slots": null
+  }
+ ],
+ "postgresVersion": "16.13",
+ "profile": "local-lab",
+ "reviewStatus": "NOT_REVIEWED",
+ "runId": "55555555-5555-4555-8555-555555555555",
+ "scenario": "connection-leak",
+ "schemaVersion": 1,
+ "server": {
+  "maxConnections": 8,
+  "reservedConnections": 0,
+  "superuserReservedConnections": 2
+ },
+ "teardown": [
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 0,
+   "phase": "baseline-valid-only",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 3,
+   "phase": "leak-reproduced",
+   "poolEnd": "timed-out",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 0,
+   "phase": "demand-beyond-capacity",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 0,
+   "phase": "slow-query",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 0,
+   "phase": "long-transaction",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 6,
+   "openLeases": 0,
+   "phase": "server-refusal",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 4,
+   "openLeases": 0,
+   "phase": "fix-applied",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  },
+  {
+   "clientEndTimeouts": 0,
+   "clientsEnded": 3,
+   "openLeases": 0,
+   "phase": "demand-beyond-capacity-after-fix",
+   "poolEnd": "resolved",
+   "sessionsAfter": 0
+  }
+ ],
+ "versions": {
+  "node": "v24.21.0",
+  "pg": "8.23.0",
+  "pgPool": "3.14.0"
+ }
+}

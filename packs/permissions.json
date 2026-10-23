@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "permissions",
+  "title": "Permissions and search path",
+  "status": "working",
+  "question": "The table exists, but the app gets a permission error or cannot see it. Which role is the app really using, and what is it allowed to do?",
+  "exercises": "PostgreSQL permissions and which role an app really uses",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "permissions-evidence",
+    "sha256": "4fe17f9cc98a7f08192023de98dacead38a01eb7e0ef0d65175fa42b3706e7c5"
+  },
+  "phases": [
+    "baseline-existing-table",
+    "table-select-missing",
+    "wrong-role",
+    "schema-usage-missing",
+    "search-path-missing",
+    "fix-applied",
+    "wrong-role-after-fix"
+  ],
+  "controls": [
+    {
+      "phase": "wrong-role",
+      "purpose": "A different role runs the same query and gets the same 42501, so the error alone does not show which role the application used."
+    },
+    {
+      "phase": "schema-usage-missing",
+      "purpose": "A role without USAGE on the schema gets 42P01 without the schema name, as if the table were missing, and is refused at the schema with it."
+    },
+    {
+      "phase": "search-path-missing",
+      "purpose": "A role whose search path leaves out the schema also gets 42P01 without the schema name, but the schema-qualified query works."
+    },
+    {
+      "phase": "wrong-role-after-fix",
+      "purpose": "After the one-table grant, the different role is still refused, so the grant reached only the intended role."
+    }
+  ],
+  "remedies": [
+    "grant-table-select"
+  ],
+  "competingExplanations": [
+    "The application connects as a different role",
+    "The role has no USAGE on the schema",
+    "The search path leaves out the schema",
+    "The table does not exist",
+    "Row-level security, column privileges or access inherited through another role",
+    "The customer environment differs from this lab"
+  ],
+  "bundle": {
+    "scenario": "table-privilege",
+    "toolVersions": [
+      "0.1.0-permissions-bundle1",
+      "0.1.0-permissions-bundle2"
+    ]
+  },
+  "guide": "docs/permissions-lab.md",
+  "stillToBuild": [
+    "Row-level security and column privileges",
+    "Roles that inherit access through group roles",
+    "A run on macOS",
+    "Guided terminal workflow"
+  ]
+}

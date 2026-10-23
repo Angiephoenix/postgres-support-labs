@@ -1,0 +1,1 @@
+{"execute":"EXECUTE pslab_count","identity":"SELECT run_id::text, current_database() AS database, current_user AS role, pg_backend_pid() AS backend FROM lab_identity","prepare":"PREPARE pslab_count AS SELECT count(*)::int AS count FROM projects","protocol":"SELECT count(*)::int AS count FROM projects","reset":"DEALLOCATE ALL","timeout":"SELECT pg_sleep(1)"}

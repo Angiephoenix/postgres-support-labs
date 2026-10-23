@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "schema-drift",
+  "title": "Missing tables and schema drift",
+  "status": "working",
+  "question": "The migration ran, but the app still says the table does not exist. Was the migration missing from the database the app used, or is something else hiding the table?",
+  "exercises": "Schema changes, SQL and evidence-based debugging",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "native-lab",
+    "sha256": "99cf421d8dba3d83006c00dbfda282a36e888f208976aa6d47026ad17b22ab24"
+  },
+  "phases": [
+    "development",
+    "before",
+    "search-path-control",
+    "after"
+  ],
+  "controls": [
+    {
+      "phase": "search-path-control",
+      "purpose": "The table exists but sits outside the search path, so the same 42P01 error appears for a different reason."
+    }
+  ],
+  "remedies": [
+    "apply-bundled-migration"
+  ],
+  "competingExplanations": [
+    "The table is outside the search path",
+    "The app connected to a different database or branch",
+    "The app role cannot use the schema or table",
+    "The identifier was created with different capitalization"
+  ],
+  "bundle": {
+    "scenario": "schema-resolution",
+    "toolVersions": [
+      "0.1.0-bundle1",
+      "0.1.0-bundle2",
+      "0.1.0-bundle3",
+      "0.1.0-bundle4",
+      "0.1.0-bundle5"
+    ]
+  },
+  "guide": "docs/native-lab.md",
+  "stillToBuild": [
+    "Wrong-target and name-casing cases",
+    "General branch comparison",
+    "A standalone practice pack"
+  ]
+}

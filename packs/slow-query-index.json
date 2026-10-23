@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "slow-query-index",
+  "title": "Slow queries and indexes",
+  "status": "working",
+  "question": "A query that used to be fast is now slow. Is it the plan, the data, the statistics or a missing index?",
+  "exercises": "Query plans and performance",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "index-evidence",
+    "sha256": "031e78bd588b0bf91a8e67ab34aac25593c20c8aa8eeeb3e1e79b4882381d0ca"
+  },
+  "phases": [
+    "stats-unanalyzed",
+    "stats-analyzed",
+    "stats-analyzed-repeat",
+    "index-applied",
+    "index-applied-repeat",
+    "common-value"
+  ],
+  "controls": [
+    {
+      "phase": "stats-unanalyzed",
+      "purpose": "The same query on a table with no column statistics, compared with the run after ANALYZE, shows whether fresh statistics alone change the plan or the work."
+    },
+    {
+      "phase": "stats-analyzed-repeat",
+      "purpose": "Repeating the query without the index compares blocks already in shared buffers with blocks read into them. Those reads may be served by the operating system's cache, so the check does not show disk activity or prove or rule out a cold cache."
+    },
+    {
+      "phase": "index-applied-repeat",
+      "purpose": "Repeating the query with the index checks that the reduced work holds on a second run."
+    },
+    {
+      "phase": "common-value",
+      "purpose": "A value that matches 30% of rows, run with the index and current statistics, shows the plan the planner chooses when the filter is not selective. No scan type is forced."
+    }
+  ],
+  "remedies": [
+    "create-index"
+  ],
+  "competingExplanations": [
+    "Outdated or missing statistics led the planner to a poor plan",
+    "The value matches too many rows for an index to help",
+    "A cold buffer cache made a single run slow",
+    "The customer query, data or indexes differ from this lab"
+  ],
+  "bundle": {
+    "scenario": "slow-query-index",
+    "toolVersions": [
+      "0.1.0-index-bundle1",
+      "0.1.0-index-bundle2"
+    ]
+  },
+  "guide": "docs/index-lab.md",
+  "stillToBuild": [
+    "An index that exists but goes unused because of a type or function mismatch",
+    "Guided terminal workflow"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local support bundle manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "toolVersion",
+    "profile",
+    "runId",
+    "generatedAt",
+    "mode",
+    "comparisonHash",
+    "reviewHead",
+    "redactionStatus",
+    "communicationApproval",
+    "files"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "toolVersion": {
+      "enum": [
+        "0.1.0-bundle1",
+        "0.1.0-bundle2",
+        "0.1.0-bundle3",
+        "0.1.0-bundle4",
+        "0.1.0-bundle5"
+      ]
+    },
+    "profile": {
+      "const": "local-lab"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[a-f0-9-]{36}$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "enum": [
+        "reviewed",
+        "gaps"
+      ]
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "redactionStatus": {
+      "const": "recognized-patterns-checked"
+    },
+    "communicationApproval": {
+      "const": "PENDING"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 28,
+      "maxItems": 28,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "enum": [
+              "case-summary.md",
+              "comparison.json",
+              "customer-reply.md",
+              "engineering-escalation.md",
+              "evidence-gap-report.md",
+              "evidence.jsonl",
+              "findings.json",
+              "hypotheses.json",
+              "intake.json",
+              "probe-plan.json",
+              "reproduction.md",
+              "resolution-validation.md",
+              "runbook-candidate.md",
+              "sources/after/case.json",
+              "sources/after/evidence.jsonl",
+              "sources/before/case.json",
+              "sources/before/evidence.jsonl",
+              "sources/development/case.json",
+              "sources/development/evidence.jsonl",
+              "sources/plan.json",
+              "sources/probes.json",
+              "sources/reviews.jsonl",
+              "sources/run.json",
+              "sources/search-path-control/case.json",
+              "sources/search-path-control/evidence.jsonl",
+              "support-bundle.html",
+              "timeline.json",
+              "validation.json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "restyledFrom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestHash",
+        "restyledAt"
+      ],
+      "properties": {
+        "manifestHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "restyledAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "draftRevision": {
+      "enum": [
+        1,
+        2
+      ]
+    }
+  }
+}

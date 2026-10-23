@@ -1,0 +1,444 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local lab observation v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "caseId",
+    "classification",
+    "source",
+    "scope",
+    "probeId",
+    "queryHash",
+    "collectionScope",
+    "collectedAt",
+    "expiresAt",
+    "collectorVersion",
+    "redactionStatus",
+    "parents",
+    "supersedes",
+    "correctionReason",
+    "result",
+    "kind"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "classification": {
+      "const": "REPRODUCED_BEHAVIOR"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "version",
+        "runId"
+      ],
+      "properties": {
+        "type": {
+          "const": "local-lab"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9-]{36}$"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment",
+        "branchFingerprint",
+        "roleFingerprint",
+        "connectionMode",
+        "identityMethod"
+      ],
+      "properties": {
+        "environment": {
+          "const": "local-lab"
+        },
+        "branchFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "roleFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "connectionMode": {
+          "const": "direct"
+        },
+        "identityMethod": {
+          "const": "lab-marker"
+        }
+      }
+    },
+    "probeId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "queryHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "collectionScope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "collectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "collectorVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "redactionStatus": {
+      "const": "synthetic-reviewed"
+    },
+    "parents": {
+      "type": "array",
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "correctionReason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "result": {
+      "type": "object"
+    },
+    "kind": {
+      "enum": [
+        "target_identity",
+        "effective_context",
+        "relation_inventory",
+        "permissions",
+        "migration_state",
+        "failure_observation"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "kind": {
+          "const": "target_identity"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expectedBranchFingerprint",
+            "observedBranchFingerprint",
+            "method",
+            "limitations",
+            "serverVersion",
+            "clusterFingerprint"
+          ],
+          "properties": {
+            "expectedBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "observedBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "method": {
+              "const": "lab-marker"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "serverVersion": {
+              "type": "string",
+              "pattern": "^[0-9]{6}$"
+            },
+            "clusterFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "effective_context"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "database",
+            "roleFingerprint",
+            "searchPath",
+            "currentSchema",
+            "limitations"
+          ],
+          "properties": {
+            "database": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "roleFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "searchPath": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 32,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              }
+            },
+            "currentSchema": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "relation_inventory"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "visible",
+            "coverage",
+            "limitations",
+            "present"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "coverage": {
+              "const": "visible-to-role"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "present": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "permissions"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "schemaUsage",
+            "relationSelect",
+            "limitations"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schemaUsage": {
+              "type": "boolean"
+            },
+            "relationSelect": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "migration_state"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "migrationId",
+            "targetBranchFingerprint",
+            "applied",
+            "limitations"
+          ],
+          "properties": {
+            "migrationId": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "targetBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "applied": {
+              "type": "boolean"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "failure_observation"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "sqlstate",
+            "queryShapeHash",
+            "outcome",
+            "limitations",
+            "matchingRows"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "sqlstate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9A-Z]{5}$"
+            },
+            "queryShapeHash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "outcome": {
+              "enum": [
+                "error",
+                "success"
+              ]
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "matchingRows": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9]{1,9}$"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$id": "https://postgres-support-lab.local/schemas/observation.v3.json"
+}

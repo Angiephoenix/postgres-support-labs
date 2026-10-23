@@ -1,0 +1,64 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  postgres:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Validate every lab pack
+        run: npm run check:packs
+      - run: npm test
+      - name: Install PostgreSQL server tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-16 pgbouncer
+          echo 'PSLAB_PG_BIN=/usr/lib/postgresql/16/bin' >> "$GITHUB_ENV"
+      - name: Run actual PostgreSQL reproduction and cleanup checks
+        run: npm run test:postgres
+      - name: Run actual PgBouncer comparisons and cleanup checks
+        run: npm run test:pooling
+      - name: Run actual index comparisons and cleanup checks
+        run: npm run test:index
+      - name: Run actual connectivity and TLS comparisons and cleanup checks
+        run: npm run test:connectivity
+      - name: Run actual permissions and search-path comparisons and cleanup checks
+        run: npm run test:permissions
+      - name: Run actual pool-exhaustion comparisons and cleanup checks
+        run: npm run test:pool-exhaustion
+  postgres-versions:
+    # The permissions and pool-exhaustion labs support PostgreSQL 16 to 18. Version 16 runs in the job above; 17 and 18 come from the PostgreSQL apt repository.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        postgres: ['17', '18']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Install PostgreSQL ${{ matrix.postgres }} server tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-common
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y postgresql-${{ matrix.postgres }}
+          echo "PSLAB_PG_BIN=/usr/lib/postgresql/${{ matrix.postgres }}/bin" >> "$GITHUB_ENV"
+      - name: Run actual permissions and search-path comparisons and cleanup checks
+        run: npm run test:permissions
+      - name: Run actual pool-exhaustion comparisons and cleanup checks
+        run: npm run test:pool-exhaustion

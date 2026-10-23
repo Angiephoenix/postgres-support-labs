@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "pgbouncer-session",
+  "title": "Session behavior through PgBouncer",
+  "status": "working",
+  "question": "A statement prepared in one transaction cannot be found in the next. Did the pooler run the next transaction on a different PostgreSQL server connection?",
+  "exercises": "Connection pooling and driver behavior",
+  "profile": "local-lab",
+  "probeCatalog": {
+    "source": "pooling-evidence",
+    "sha256": "b5b6cbb67a06f6ac1405eabed88c356fff799ee0981fd4ac6aedd08e95b0517a"
+  },
+  "phases": [
+    "direct-first",
+    "direct-next",
+    "pooled-first",
+    "pooled-next",
+    "direct-reset",
+    "pooled-contained",
+    "protocol-first",
+    "protocol-next",
+    "timeout-control"
+  ],
+  "controls": [
+    {
+      "phase": "direct-reset",
+      "purpose": "DEALLOCATE ALL on a direct connection produces the same 26000 with no pooler involved."
+    },
+    {
+      "phase": "timeout-control",
+      "purpose": "A statement timeout produces a different error, 57014, so a timeout is not mistaken for this problem."
+    }
+  ],
+  "remedies": [
+    "transaction-contained",
+    "protocol-prepared"
+  ],
+  "competingExplanations": [
+    "The connector or application reset the session",
+    "A timeout was mistaken for a pooling limitation",
+    "The prepared operation itself is invalid",
+    "A customer application sent this workflow through a transaction pool"
+  ],
+  "bundle": {
+    "scenario": "pooling-session",
+    "toolVersions": [
+      "0.1.0-pooling-bundle1",
+      "0.1.0-pooling-bundle2",
+      "0.1.0-pooling-bundle3"
+    ]
+  },
+  "guide": "docs/pooling-lab.md",
+  "stillToBuild": [
+    "More workflows, including cases where the operation itself is invalid",
+    "Routing boundaries"
+  ]
+}

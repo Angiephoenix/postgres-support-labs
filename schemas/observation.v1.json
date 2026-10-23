@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "caseId",
+    "classification",
+    "source",
+    "scope",
+    "probeId",
+    "queryHash",
+    "collectionScope",
+    "collectedAt",
+    "expiresAt",
+    "collectorVersion",
+    "redactionStatus",
+    "parents",
+    "supersedes",
+    "correctionReason",
+    "result"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "classification": {
+      "const": "REPRODUCED_BEHAVIOR"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "version"
+      ],
+      "properties": {
+        "type": {
+          "const": "fixture"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment",
+        "branchFingerprint",
+        "roleFingerprint",
+        "connectionMode",
+        "identityMethod"
+      ],
+      "properties": {
+        "environment": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "branchFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "roleFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "connectionMode": {
+          "enum": [
+            "direct",
+            "pooled",
+            "unknown"
+          ]
+        },
+        "identityMethod": {
+          "const": "fixture-definition"
+        }
+      }
+    },
+    "probeId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "queryHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "collectionScope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "collectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "collectorVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "redactionStatus": {
+      "const": "synthetic-reviewed"
+    },
+    "parents": {
+      "type": "array",
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "correctionReason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "schema",
+        "visible",
+        "sqlstate",
+        "limitations"
+      ],
+      "properties": {
+        "relation": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "sqlstate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9A-Z]{5}$"
+        },
+        "limitations": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    }
+  }
+}

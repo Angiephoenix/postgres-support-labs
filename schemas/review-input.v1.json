@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Human review input v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "comparisonHash",
+    "expectedReviewHead",
+    "reviewer",
+    "decision",
+    "rationale"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "expectedReviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9 _-]{0,79}$"
+    },
+    "decision": {
+      "enum": [
+        "accept",
+        "reject",
+        "request-changes"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 2000
+    }
+  }
+}

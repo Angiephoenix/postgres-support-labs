@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Case intake v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "report",
+    "expectedBehavior"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "report": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "expectedBehavior": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "errorMessage": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "sqlstate": {
+      "type": "string",
+      "pattern": "^([0-9A-Z]{5}|unknown)$"
+    },
+    "firstObservedAt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "framework": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "connector": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "deployment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "connectionMode": {
+      "enum": [
+        "direct",
+        "pooled",
+        "unknown"
+      ]
+    },
+    "recentChange": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "impact": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "reproductionStatus": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "dataSensitivity": {
+      "enum": [
+        "synthetic",
+        "sanitized",
+        "unknown"
+      ]
+    },
+    "relation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    }
+  }
+}

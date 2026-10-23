@@ -1,0 +1,34 @@
+{
+  "name": "postgres-support-lab",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.ts",
+    "check:packs": "node src/cli.ts lab packs --check",
+    "demo": "node src/cli.ts gaps examples/schema-drift.json",
+    "start": "node src/cli.ts",
+    "guide": "node src/cli.ts guide",
+    "demo:ledger": "node scripts/ledger-demo.ts",
+    "demo:evidence": "node scripts/evidence-demo.ts",
+    "demo:postgres": "node scripts/postgres-demo.ts",
+    "test:postgres": "node --test tests/native-lab.integration.ts",
+    "demo:pooling": "node scripts/pooling-demo.ts",
+    "test:pooling": "node --test tests/pooling.integration.ts",
+    "demo:index": "node scripts/index-demo.ts",
+    "test:index": "node --test tests/index.integration.ts",
+    "demo:connectivity": "node scripts/connectivity-demo.ts",
+    "test:connectivity": "node --test tests/connectivity.integration.ts",
+    "demo:permissions": "node scripts/permissions-demo.ts",
+    "test:permissions": "node --test tests/permissions.integration.ts",
+    "demo:pool-exhaustion": "node scripts/pool-exhaustion-demo.ts",
+    "test:pool-exhaustion": "node --test tests/pool-exhaustion.integration.ts"
+  },
+  "dependencies": {
+    "pg": "8.23.0"
+  }
+}

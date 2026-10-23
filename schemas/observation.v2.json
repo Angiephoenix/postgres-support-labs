@@ -1,0 +1,421 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Typed fixture observation v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "caseId",
+    "classification",
+    "source",
+    "scope",
+    "probeId",
+    "queryHash",
+    "collectionScope",
+    "collectedAt",
+    "expiresAt",
+    "collectorVersion",
+    "redactionStatus",
+    "parents",
+    "supersedes",
+    "correctionReason",
+    "result",
+    "kind"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "classification": {
+      "const": "REPRODUCED_BEHAVIOR"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "version"
+      ],
+      "properties": {
+        "type": {
+          "const": "fixture"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment",
+        "branchFingerprint",
+        "roleFingerprint",
+        "connectionMode",
+        "identityMethod"
+      ],
+      "properties": {
+        "environment": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+        },
+        "branchFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "roleFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "connectionMode": {
+          "enum": [
+            "direct",
+            "pooled",
+            "unknown"
+          ]
+        },
+        "identityMethod": {
+          "const": "fixture-definition"
+        }
+      }
+    },
+    "probeId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "queryHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "collectionScope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "collectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "collectorVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "redactionStatus": {
+      "const": "synthetic-reviewed"
+    },
+    "parents": {
+      "type": "array",
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+    },
+    "correctionReason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "result": {
+      "type": "object"
+    },
+    "kind": {
+      "enum": [
+        "target_identity",
+        "effective_context",
+        "relation_inventory",
+        "permissions",
+        "migration_state",
+        "failure_observation"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "kind": {
+          "const": "target_identity"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expectedBranchFingerprint",
+            "observedBranchFingerprint",
+            "method",
+            "limitations"
+          ],
+          "properties": {
+            "expectedBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "observedBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "method": {
+              "const": "fixture-definition"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "effective_context"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "database",
+            "roleFingerprint",
+            "searchPath",
+            "currentSchema",
+            "limitations"
+          ],
+          "properties": {
+            "database": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "roleFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "searchPath": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 32,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              }
+            },
+            "currentSchema": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "relation_inventory"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "visible",
+            "coverage",
+            "limitations"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "coverage": {
+              "enum": [
+                "visible-to-role",
+                "fixture-complete"
+              ]
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "permissions"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "schemaUsage",
+            "relationSelect",
+            "limitations"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schemaUsage": {
+              "type": "boolean"
+            },
+            "relationSelect": {
+              "type": "boolean"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "migration_state"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "migrationId",
+            "targetBranchFingerprint",
+            "applied",
+            "limitations"
+          ],
+          "properties": {
+            "migrationId": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "targetBranchFingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "applied": {
+              "type": "boolean"
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": "failure_observation"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "schema",
+            "sqlstate",
+            "queryShapeHash",
+            "outcome",
+            "limitations"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$"
+            },
+            "sqlstate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9A-Z]{5}$"
+            },
+            "queryShapeHash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "outcome": {
+              "enum": [
+                "error",
+                "success"
+              ]
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Permissions (table privilege) support bundle manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scenario",
+    "toolVersion",
+    "profile",
+    "runId",
+    "generatedAt",
+    "mode",
+    "comparisonHash",
+    "reviewHead",
+    "sourceManifestHash",
+    "remedy",
+    "redactionStatus",
+    "communicationApproval",
+    "files"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "scenario": {
+      "const": "table-privilege"
+    },
+    "toolVersion": {
+      "enum": [
+        "0.1.0-permissions-bundle1",
+        "0.1.0-permissions-bundle2"
+      ]
+    },
+    "profile": {
+      "const": "local-lab"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[a-f0-9-]{36}$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "enum": [
+        "reviewed",
+        "gaps"
+      ]
+    },
+    "comparisonHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceManifestHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "remedy": {
+      "enum": [
+        null,
+        "grant-table-select"
+      ]
+    },
+    "redactionStatus": {
+      "const": "recognized-patterns-checked"
+    },
+    "communicationApproval": {
+      "const": "PENDING"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "enum": [
+              "case-summary.md",
+              "comparison.json",
+              "customer-reply.md",
+              "engineering-escalation.md",
+              "evidence-gap-report.md",
+              "evidence.jsonl",
+              "findings.json",
+              "hypotheses.json",
+              "probe-plan.json",
+              "reproduction.md",
+              "resolution-validation.md",
+              "runbook-candidate.md",
+              "sources/permissions-manifest.json",
+              "sources/permissions-plan.json",
+              "sources/permissions-probes.json",
+              "sources/permissions-reviews.jsonl",
+              "sources/permissions-run.json",
+              "support-bundle.html",
+              "timeline.json",
+              "validation.json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
